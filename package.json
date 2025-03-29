@@ -2,36 +2,21 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "companion",
   "title": "Companion",
-  "description": "Random assortment of useful Raycast commands.",
+  "description": "A random assortment of utility commands.",
   "author": "robbiehobby",
   "icon": "extension-icon.png",
-  "scripts": {
-    "watch": "ray develop",
-    "build": "ray build",
-    "build:local": "ray build -o ./public"
-  },
-  "devDependencies": {
-    "@raycast/api": "^1.85.2",
-    "@raycast/utils": "^1.17.0",
-    "@types/node": "^22.13.14",
-    "@types/react": "^19.0.12",
-    "chrono-node": "^2.7.7",
-    "dayjs": "^1.11.13",
-    "execa": "^9.5.2",
-    "typescript": "^5.4.5"
-  },
   "commands": [
     {
       "name": "date-time",
       "title": "Date & Time",
-      "description": "Convert dates and timestamps.",
+      "description": "Create and convert dates using natural language.",
       "mode": "view",
       "icon": "extension-icon.png"
     },
     {
       "name": "encode-decode",
       "title": "Encode & Decode",
-      "description": "Encode and decode text and files using base64.",
+      "description": "Encode and decode text or files in Base64 format.",
       "mode": "view",
       "icon": "extension-icon.png"
     },
@@ -45,16 +30,30 @@
     {
       "name": "toggle-case",
       "title": "Toggle Case",
-      "description": "Toggle the selected text between upper and lower case.",
+      "description": "Toggle the selected text between uppercase and lowercase.",
       "mode": "no-view",
       "icon": "extension-icon.png"
     },
     {
       "name": "wifi",
       "title": "Wi-Fi",
-      "description": "Show the Wi-Fi SSID in the menu bar.",
+      "description": "Show the current Wi-Fi SSID in the menu bar.",
       "mode": "menu-bar",
       "interval": "10s"
     }
-  ]
+  ],
+  "scripts": {
+    "dev": "ray develop",
+    "build": "ray build && ray build -o ./public"
+  },
+  "devDependencies": {
+    "@raycast/api": "^1.85.2",
+    "@raycast/utils": "^1.17.0",
+    "@types/node": "^22.13.14",
+    "@types/react": "^19.0.12",
+    "chrono-node": "^2.7.7",
+    "dayjs": "^1.11.13",
+    "execa": "^9.5.2",
+    "typescript": "^5.4.5"
+  }
 }

@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react";
 import { MenuBarExtra } from "@raycast/api";
-import React, { useEffect, useState } from "react";
 
-function Command() {
+export default function WiFi() {
   const [name, setName] = useState<string | false>(false);
 
   useEffect(() => {
-    async function getName() {
+    (async () => {
       const { execa } = await import("execa");
       try {
         const ssid = (await execa`/usr/sbin/ipconfig getsummary en0`.pipe`grep ${` SSID :`}`).stdout;
@@ -13,11 +13,8 @@ function Command() {
       } catch (_e) {
         setName("");
       }
-    }
-    getName();
+    })();
   }, []);
 
   return <MenuBarExtra isLoading={name === false} title={name || "Not connected"}></MenuBarExtra>;
 }
-
-export default Command;

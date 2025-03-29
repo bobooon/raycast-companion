@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Action, ActionPanel, Color, List } from "@raycast/api";
 import { parseDate } from "chrono-node";
 import dayjs from "dayjs";
@@ -15,9 +15,7 @@ dayjs.extend(timezonePlugin);
 dayjs.extend(relativeTimePlugin);
 
 function handleConversion(input: string, timezone: string) {
-  if (input.match(/^\d+$/)) {
-    input = new Date(parseInt(input, 10) * 1000).toString();
-  }
+  if (input.match(/^\d+$/)) input = new Date(parseInt(input, 10) * 1000).toString();
   const parsedDate = parseDate(input);
   if (!parsedDate || parsedDate.toString() === "Invalid Date") return [];
 
@@ -35,19 +33,20 @@ function handleConversion(input: string, timezone: string) {
   ];
 }
 
-function Command() {
+export default function DateTime() {
   const [input, setInput] = useState("now");
   const [timezone, setTimezone] = useState(Intl.DateTimeFormat().resolvedOptions().timeZone);
   const [items, setItems] = useState<{ label: string; value: string | number }[]>([]);
 
-  async function onTimezoneChange(value: string) {
+  const onTimezoneChange = async (value: string) => {
     setTimezone(value);
     setItems(handleConversion(input, value));
-  }
-  async function onSearchTextChange(value: string) {
+  };
+
+  const onSearchTextChange = async (value: string) => {
     setInput(value);
     setItems(handleConversion(value, timezone));
-  }
+  };
 
   return (
     <List
@@ -66,7 +65,7 @@ function Command() {
       {items.map((item, index) => (
         <List.Item
           key={index}
-          title={`${item.value}`}
+          title={String(item.value)}
           accessories={[{ tag: { value: item.label, color: Color.SecondaryText } }]}
           actions={
             <ActionPanel>
@@ -79,5 +78,3 @@ function Command() {
     </List>
   );
 }
-
-export default Command;

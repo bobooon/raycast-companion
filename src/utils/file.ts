@@ -8,7 +8,7 @@ export async function getFileInfo(file: string) {
   process = await execa`/usr/bin/file -b ${file} --mime-type`;
   data.mime = process.stdout;
   process = await execa`/usr/bin/file -b ${file} --extension`;
-  data.extension = process.stdout;
+  data.extension = process.stdout.split("/").shift();
 
   return data;
 }

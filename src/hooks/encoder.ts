@@ -3,35 +3,30 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { environment } from "@raycast/api";
 import { useEffect } from "react";
-import { getDataUri, getFileInfo } from "./file.ts";
+import { getDataUri, getFileInfo } from "../utils/file.ts";
 
 const tmp = path.join(environment.supportPath, "encoder");
 fs.mkdir(tmp, { recursive: true });
 
 type EncoderResult = { text: string; data?: string; file?: string };
 
-function useEncoder() {
+export default function useEncoder() {
   useEffect(() => {
-    return () => {
-      async function housekeeping() {
-        (await fs.readdir(tmp)).forEach((file) => fs.rm(path.join(tmp, file)));
-      }
-      housekeeping();
-    };
+    (async () => {
+      (await fs.readdir(tmp)).forEach((file) => fs.rm(path.join(tmp, file)));
+    })();
   }, []);
 
-  async function encode(type: string, data: string): Promise<EncoderResult> {
-    if (type === "text") return { text: Buffer.from(data).toString("base64") };
-
+  const encode = async (source: string, data: string) => {
+    if (source === "text") return { text: Buffer.from(data).toString("base64") };
     const file = await fs.readFile(data);
     const text = file.toString("base64");
+    return { text, data: getDataUri(text, await getFileInfo(data)) } as EncoderResult;
+  };
 
-    return { text, data: getDataUri(text, await getFileInfo(data)) };
-  }
-
-  async function decode(type: string, data: string): Promise<EncoderResult> {
+  const decode = async (source: string, data: string) => {
     const result =
-      type === "text"
+      source === "text"
         ? Buffer.from(data.replace(/^data:.*;base64,/, ""), "base64")
         : Buffer.from(await fs.readFile(data, "utf8"), "base64");
 
@@ -50,10 +45,8 @@ function useEncoder() {
     }
 
     await fs.rm(file);
-    return { text: result.toString() };
-  }
+    return { text: result.toString() } as EncoderResult;
+  };
 
   return { encode, decode };
 }
-
-export default useEncoder;

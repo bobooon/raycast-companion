@@ -1,6 +1,6 @@
 import { getSelectedText, Clipboard, closeMainWindow, popToRoot, Toast, showToast } from "@raycast/api";
 
-async function Command() {
+export default async function ToggleCase() {
   try {
     const text = await getSelectedText();
     let transformedText = text.toUpperCase();
@@ -12,5 +12,3 @@ async function Command() {
     await showToast({ style: Toast.Style.Failure, title: "Text could not be transformed" });
   }
 }
-
-export default Command;
