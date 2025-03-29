@@ -4,7 +4,7 @@ import { readFile } from "fs/promises";
 import path from "node:path";
 import { MenuBarExtra } from "@raycast/api";
 
-export default function OrbStack() {
+export default function Orb() {
   const [name, setName] = useState<string | false>(false);
 
   useEffect(() => {

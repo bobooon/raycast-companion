@@ -7,36 +7,29 @@
   "icon": "extension-icon.png",
   "commands": [
     {
-      "name": "date-time",
-      "title": "Date & Time",
-      "description": "Create and convert dates using natural language.",
+      "name": "datetime",
+      "title": "Dates & Times",
+      "description": "Transform dates using natural language.",
       "mode": "view",
       "icon": "extension-icon.png"
     },
     {
-      "name": "encode-decode",
-      "title": "Encode & Decode",
-      "description": "Encode and decode text or files in Base64 format.",
-      "mode": "view",
-      "icon": "extension-icon.png"
-    },
-    {
-      "name": "orbstack",
-      "title": "OrbStack Location",
+      "name": "orb",
+      "title": "Menu Bar OrbStack",
       "description": "Show the current OrbStack data location in the menu bar.",
       "mode": "menu-bar",
       "interval": "10s"
     },
     {
-      "name": "toggle-case",
-      "title": "Toggle Case",
-      "description": "Toggle the selected text between uppercase and lowercase.",
-      "mode": "no-view",
+      "name": "transform",
+      "title": "Transform Text",
+      "description": "Transform the selected text.",
+      "mode": "view",
       "icon": "extension-icon.png"
     },
     {
       "name": "wifi",
-      "title": "Wi-Fi",
+      "title": "Menu Bar Wi-Fi",
       "description": "Show the current Wi-Fi SSID in the menu bar.",
       "mode": "menu-bar",
       "interval": "10s"
