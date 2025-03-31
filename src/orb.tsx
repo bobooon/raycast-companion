@@ -11,7 +11,7 @@ export default function Orb() {
     (async () => {
       try {
         setName(path.basename(JSON.parse(await readFile(`${homedir()}/.orbstack/vmconfig.json`, "utf8")).data_dir));
-      } catch (_e) {
+      } catch (_error) {
         setName("Default");
       }
     })();

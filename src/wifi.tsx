@@ -10,7 +10,7 @@ export default function WiFi() {
       try {
         const ssid = (await execa`/usr/sbin/ipconfig getsummary en0`.pipe`grep ${` SSID :`}`).stdout;
         setName(ssid.replace("SSID :", "").trim());
-      } catch (_e) {
+      } catch (_error) {
         setName("");
       }
     })();
