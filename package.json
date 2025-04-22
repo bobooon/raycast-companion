@@ -40,13 +40,13 @@
     "build": "ray build && ray build -o ./public"
   },
   "devDependencies": {
-    "@raycast/api": "^1.85.2",
-    "@raycast/utils": "^1.17.0",
-    "@types/node": "^22.13.14",
-    "@types/react": "^19.0.12",
-    "chrono-node": "^2.7.7",
+    "@raycast/api": "^1.96.0",
+    "@raycast/utils": "^1.19.1",
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "chrono-node": "^2.8.0",
     "dayjs": "^1.11.13",
     "execa": "^9.5.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.8.3"
   }
 }
