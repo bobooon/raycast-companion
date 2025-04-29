@@ -1,4 +1,6 @@
-Raycast extension with an assortment of useful commands.
+## Raycast Companion Extension
+
+An assortment of useful utility and menu bar commands.
 
 <br>
 

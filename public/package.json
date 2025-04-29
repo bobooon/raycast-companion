@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "companion",
   "title": "Companion",
-  "description": "A random assortment of utility commands.",
+  "description": "An assortment of useful utility and menu bar commands.",
   "author": "robbiehobby",
   "license": "MIT",
   "icon": "extension-icon.png",
